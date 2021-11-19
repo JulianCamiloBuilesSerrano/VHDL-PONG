@@ -1,0 +1,101 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clk'
+Slack : -2.872
+TNS   : -317.623
+
+Type  : Slow 1200mV 85C Model Setup 'gameStates:game|pr_state.play'
+Slack : -2.854
+TNS   : -2.854
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : 0.051
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'gameStates:game|pr_state.play'
+Slack : 2.773
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'clk'
+Slack : -1.339
+TNS   : -110.976
+
+Type  : Slow 1200mV 85C Model Removal 'clk'
+Slack : 1.145
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -193.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'gameStates:game|pr_state.play'
+Slack : 0.422
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'gameStates:game|pr_state.play'
+Slack : -2.563
+TNS   : -2.563
+
+Type  : Slow 1200mV 0C Model Setup 'clk'
+Slack : -2.485
+TNS   : -268.513
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : 0.000
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'gameStates:game|pr_state.play'
+Slack : 2.604
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'clk'
+Slack : -1.087
+TNS   : -89.152
+
+Type  : Slow 1200mV 0C Model Removal 'clk'
+Slack : 1.021
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -193.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'gameStates:game|pr_state.play'
+Slack : 0.432
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'gameStates:game|pr_state.play'
+Slack : -1.429
+TNS   : -1.429
+
+Type  : Fast 1200mV 0C Model Setup 'clk'
+Slack : -1.236
+TNS   : -101.608
+
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : -0.023
+TNS   : -0.023
+
+Type  : Fast 1200mV 0C Model Hold 'gameStates:game|pr_state.play'
+Slack : 1.805
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'clk'
+Slack : -0.344
+TNS   : -17.732
+
+Type  : Fast 1200mV 0C Model Removal 'clk'
+Slack : 0.666
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -204.741
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'gameStates:game|pr_state.play'
+Slack : 0.456
+TNS   : 0.000
+
+------------------------------------------------------------

@@ -1,0 +1,128 @@
+LIBRARY IEEE;
+use ieee.numeric_std.all;
+USE ieee.std_logic_1164.all;
+-------------------------------------------------------
+ENTITY ball_move IS
+
+	PORT(
+				clk						:	in		std_logic;
+				ena						:	in		std_logic;
+				rst						:	in		std_logic;
+				direction				: 	in		std_logic;
+				left_righ				: 	in     	std_logic;
+				button					:	in 		std_logic;
+				move_ball				:	in 	std_logic_vector(1 downto 0);
+				ball_m1_x 			:   out std_logic_vector(7 downto 0);
+				ball_m1_y 			:   out std_logic_vector(7 downto 0);
+				ball_m2_x 			:   out std_logic_vector(7 downto 0);
+				ball_m2_y 			:   out std_logic_vector(7 downto 0)
+			);
+
+END ENTITY ball_move;
+-------------------------------------------------------
+architecture logic of ball_move is
+TYPE state IS (begin_game,decision,mov_right, move_left, wait_seconds);
+signal pr_state, next_state		: state := decision;
+-- signal temp_ball_m1_x : std_logic_vector(7 downto 0) :="00000010";
+-- signal temp_ball_m1_y : std_logic_vector(7 downto 0) :="00001000";
+-- signal temp_ball_m2_x : std_logic_vector(7 downto 0) :="00000000";
+-- signal temp_ball_m2_y : std_logic_vector(7 downto 0) :="00000000";
+signal ball	: std_logic_vector(15 downto 0)  := "0100000000000000";
+signal ball_row : std_logic_vector(7 downto 0) :="00001000";
+
+SIGNAL      load,max0,min0,max1,min1		:  STD_LOGIC;
+SIGNAL	  	limit      			 	:  STD_LOGIC;
+SIGNAL      up        				:  STD_LOGIC;
+SIGNAL      d          				:  STD_LOGIC_VECTOR(3 DOWNTO 0);
+SIGNAL		p,n1          				:  STD_LOGIC_VECTOR(3 DOWNTO 0);
+SIGNAL      n0  			      	:  STD_LOGIC_VECTOR(23 DOWNTO 0);
+begin
+	load <= '0';
+	limit <= '1';
+	up <= '1';
+	counter_1: ENTITY work.univ_bin_counter
+	GENERIC MAP (N => 24)
+	PORT MAP(
+				clk        => clk,
+            rst        => rst,
+            ena        => ena,
+            syn_clr    => '0',
+            load       => load,
+			limit      => limit,
+            up         => up,
+            d          => "000000000000000000000000",
+			p          => "010011000100101101000000",
+            max_tick   => max0,
+            min_tick   => min0,
+            counter    => n0);
+	GENERIC MAP (N => 4)
+	PORT MAP(
+			clk        => max0,
+			rst        => rst,
+			ena        => ena,
+			syn_clr    => '0',
+			load       => load,
+			limit      => limit,
+			up         => up,
+			d          => "0000",
+			p          => "1111",
+			max_tick   => max1,
+			min_tick   => min1,
+			counter    => n1);
+	selector : process(clk,rst)
+	begin
+		if (rst = '1') then
+			pr_state <= draw1;
+		elsif (rising_edge(clk)) then
+			pr_state <= next_state;
+			ball_m1_x <= ball(8 downto 15);
+			ball_m2_x <= ball(0 dowNTO 7);
+			ball_m1_y <= ball_row;
+			ball_m2_y <= ball_row;
+		end if;
+	end process selector;
+
+	mat_case: process(pr_state,max1,button,direction,left_righ)
+	begin
+		case pr_state is
+			when begin_game =>
+				if (button = '1') then 
+					next_state <= mov_right;
+				else
+				next_state <= decision;
+				end if;
+			when decision =>
+				if(left_righ = '1') then 
+					next_state <= mov_right;
+				else 
+					next_state <= move_left;
+				end if;
+			when mov_right =>
+				ball <= '0' & ball(15 downto 1);
+				next_state <= wait_seconds;
+				if(direction = '0') then --va para abajo
+					ball_row <=	ball_row(6 downto 0) & '0';
+				else
+					ball_row <=	'0' & ball_row(7 downto 1) ;
+				end if;
+			when move_left =>
+				ball <= ball(14 downto 0)& '0';
+				next_state <= wait_seconds;
+				if(direction = '0') then --va para abajo
+					ball_row <=	ball_row(6 downto 0) & '0';
+				else
+					ball_row <=	'0' & ball_row(7 downto 1) ;
+				end if;
+			when wait_seconds =>
+				ball_row <= ball_row;
+				ball <= ball;
+				if(max1) then 
+					next_state <= decision;
+				else
+					next_state <= wait_seconds;
+				end if;
+			when 
+		end case;
+	end process mat_case;
+
+end architecture;

@@ -1,0 +1,198 @@
+LIBRARY IEEE;
+use ieee.numeric_std.all;
+USE ieee.std_logic_1164.all;
+-------------------------------------------------------
+ENTITY gameStates IS
+
+	PORT(
+				clk						:	in		std_logic;
+				ena						:	in		std_logic;
+				rst						:	in		std_logic;
+				button_up				:	in		std_logic;
+				button_down				:	in		std_logic;
+				direction 				:	out     std_logic;
+				left_righ				: 	out     std_logic;
+				move_ball				:	out 	std_logic_vector(1 downto 0)
+;				ball_m1_x 				: 	in	std_logic_vector(7 downto 0);
+				ball_m1_y 				: 	in	std_logic_vector(7 downto 0);
+				--falta agregar la mattiz 2
+--				ball_m2_x 				: 	in	std_logic_vector(7 downto 0);
+--				ball_m2_y 				: 	in	std_logic_vector(7 downto 0);
+				--leds de la tarjeta para probar
+				racket_left				:	in	std_logic_vector(7 downto 0);
+				racket_right			:	in	std_logic_vector(7 downto 0)
+			);
+
+END ENTITY gameStates;
+-------------------------------------------------------
+architecture logic of gameStates is
+	TYPE state IS (play, rebound_up, rebound_down,rebound_racketLeft,rebound_racketRight,finsh,gool_left,gool_right);
+	signal pr_state, next_state				: state := play;
+	signal temp_direction,temp_left_righ	:std_logic := '0';
+	signal temp_movimiento					: STD_LOGIC_VECTOR(1 downto 0);
+	SIGNAL      load,max0,min0,max1,min1	:  STD_LOGIC;
+	SIGNAL	  	limit      			 	:  STD_LOGIC;
+	SIGNAL      up        				:  STD_LOGIC;
+	SIGNAL      d          				:  STD_LOGIC_VECTOR(3 DOWNTO 0);
+	SIGNAL		p          				:  STD_LOGIC_VECTOR(3 DOWNTO 0);
+	SIGNAL      n0,n1  			      	:  STD_LOGIC_VECTOR(3 DOWNTO 0);
+begin
+	load <= '0';
+	limit <= '1';
+	up <= '1';
+	counter_1: ENTITY work.univ_bin_counter
+	GENERIC MAP (N => 4)
+	PORT MAP(
+				clk        => clk,
+            rst        => rst,
+            ena        => ena,
+            syn_clr    => '0',
+            load       => load,
+				limit      => limit,
+            up         => up,
+            d          => "0000",
+				p          => "1111",
+            max_tick   => max0,
+            min_tick   => min0,
+            counter    => n0);
+	counter_2: ENTITY work.univ_bin_counter
+		GENERIC MAP (N => 4)
+		PORT MAP(
+					clk        => clk,
+					rst        => rst,
+					ena        => ena,
+					syn_clr    => '0',
+					load       => load,
+					limit      => limit,
+					up         => up,
+					d          => "0000",
+					p          => "0010",
+					max_tick   => max1,
+					min_tick   => min1,
+					counter    => n0);
+	-- points_py1: ENTITY work.univ_bin_counter
+	-- GENERIC MAP (N => 4)
+	-- PORT MAP(
+	-- 			clk        => clk,
+	-- 			rst        => rst,
+	-- 			ena        => ena,
+	-- 			syn_clr    => '0',
+	-- 			load       => load,
+	-- 			limit      => limit,
+	-- 			up         => up,
+	-- 			d          => "0000",
+	-- 			p          => "0010",
+	-- 			max_tick   => max1,
+	-- 			min_tick   => min1,
+	-- 			counter    => n0);
+	-- points_py1: ENTITY work.univ_bin_counter
+	-- GENERIC MAP (N => 4)
+	-- PORT MAP(
+	-- 			clk        => clk,
+	-- 			rst        => rst,
+	-- 			ena        => ena,
+	-- 			syn_clr    => '0',
+	-- 			load       => load,
+	-- 			limit      => limit,
+	-- 			up         => up,
+	-- 			d          => "0000",
+	-- 			p          => "0010",
+	-- 			max_tick   => max1,
+	-- 			min_tick   => min1,
+	-- 			counter    => n0);
+	selector : process(clk,rst)
+
+	selector : process(clk,rst)
+	begin
+		if (rst = '1') then
+			pr_state <= play;
+		elsif (rising_edge(clk)) then
+			pr_state <= next_state;
+			direction <= temp_direction;
+			move_ball <= temp_movimiento;
+			left_righ <= temp_left_righ;
+		end if;
+	end process selector;
+	mat_case: process(pr_state,max0,n1,racket_left,racket_right,ball_m1_y,ball_m2_y)
+	begin
+		case pr_state is
+			when play =>
+				temp_movimiento <= temp_movimiento;
+				temp_direction <= temp_direction;
+				temp_left_righ <= temp_left_righ;
+				-- que evalue y comapaere el movimiento de la pelota
+				if(ball_m1_y = "11111110" or ball_m2_y = "01111111") then --se evalua el rebote superior
+					next_state <= rebound_up;
+				elsif (ball_m1_y = "01111111") then --se evalua el rebote inferior
+					next_state <= rebound_down;
+				elsif ((racket_left AND ball_m1_y) != "00000000"  AND ball_m1_x = "00000010" ) then-- se evalua si la raqueta izquiera puede hacer el golpe
+					next_state <= rebound_racketLeft; 
+				elsif ((racket_right AND ball_m2_y) != "00000000"  AND ball_m2_x = "01000000" ) then-- se evalua si la raqueta derecha puede hacer el golp
+					next_state <= rebound_racketRight; 
+				elsif ((racket_left AND ball_m1_y) != "00000000"  AND ball_m1_x = "00000001" ) then-- se evalua si se hace gol en el lado izquierdo
+					next_state <= gool_left;
+				elsif ((racket_right AND ball_m2_y) != "00000000"  AND ball_m2_x = "10000000" ) then-- se evalua si se hace gol en el lado derecho
+					next_state <= gool_right; 
+				end if;
+			when rebound_up =>
+				temp_left_righ <= temp_left_righ;
+				temp_movimiento <= temp_movimiento;
+				temp_direction <= '0';
+				if (max0 = '1') then 
+					next_state <= play;
+				else
+					next_state <= rebound_up;
+				end if;
+			when rebound_down =>
+				temp_left_righ <= temp_left_righ;
+				temp_movimiento <= temp_movimiento;
+				temp_direction <= '1';
+				if (max0 = '1') then 
+					next_state <= play;
+				else
+					next_state <= rebound_down;
+				end if;
+			when rebound_racketLeft =>
+					temp_movimiento <= temp_movimiento;
+					temp_direction <= temp_direction;
+					temp_left_righ <= '1'; --derecha es 1
+					if(n1 = "00")then
+						--derecho
+						temp_movimiento <= "00";
+					elsif(n1 = "01")  then
+						--inclindo abajo
+						temp_movimiento <= "01";
+					elsif(n1 = "10") then
+						--inclindo abajo
+						temp_movimiento <= "10";
+					end if;
+					if (max0 = '1') then 
+						next_state <= play;
+					else
+						next_state <= rebound_racketLeft;
+					end if;
+			when rebound_racketRight =>
+					temp_movimiento <= temp_movimiento;
+					temp_direction <= temp_direction;
+					temp_left_righ <= '0'; --derecha es 1
+					if(n1 = "00")then
+						--derecho
+						temp_movimiento <= "00";
+					elsif(n1 = "01")  then
+						--inclindo abajo
+						temp_movimiento <= "01";
+					elsif(n1 = "10") then
+						--inclindo abajo
+						temp_movimiento <= "10";
+					end if;
+					if (max0 = '1') then 
+						next_state <= play;
+					else
+						next_state <= rebound_racketLeft;
+					end if;
+			when gool_left =>
+			when gool_right =>
+			when finsh =>
+		end case;
+	end process; 
+end architecture;

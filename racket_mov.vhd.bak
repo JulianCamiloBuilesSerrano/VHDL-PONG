@@ -1,0 +1,42 @@
+LIBRARY IEEE;
+use ieee.numeric_std.all;
+USE ieee.std_logic_1164.all;
+-------------------------------------------------------
+ENTITY racket_mov IS
+
+	PORT(
+				clk						:	in		std_logic;
+				rst						:	in		std_logic;
+				button_up				:	in		std_logic;
+				button_down				:	in		std_logic;
+
+				actual_pos				:	in		std_logic_vector(7 downto 0);
+
+				next_pos					:	out	std_logic_vector(7 downto 0)
+			);
+
+END ENTITY racket_mov;
+-------------------------------------------------------
+architecture movimiento of racket_mov is
+signal		temporal					:			std_logic_vector(7 downto 0);
+
+begin
+
+	movimiento : process (clk, rst, button_down, botton_up)
+	begin
+		if(rst = '1') then
+			temporal <= "00111000";
+		elsif(rising_edge(clk)) then
+			if(button_up = '1') then
+				temporal <= '0' & actual_pos(7 downto 1);
+			elsif(button_down = '1') then
+				temporal <= '1' & actual_pos(6 downto 0);
+			end if;
+		end if;
+
+		next_pos <= temporal;
+
+	end process movimiento;
+
+
+end architecture;

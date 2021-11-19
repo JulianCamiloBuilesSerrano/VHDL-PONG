@@ -1,0 +1,776 @@
+Analysis & Synthesis report for pump
+Fri Nov 19 01:59:03 2021
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |pong|ball_move:ball|pr_state
+  9. State Machine - |pong|gameStates:game|pr_state2
+ 10. State Machine - |pong|gameStates:game|pr_state
+ 11. State Machine - |pong|racket_mov:mov_right|pr_state
+ 12. State Machine - |pong|racket_mov:mov_left|pr_state
+ 13. State Machine - |pong|to_matrix:matrix_led|pr_state
+ 14. User-Specified and Inferred Latches
+ 15. Registers Removed During Synthesis
+ 16. General Register Statistics
+ 17. Inverted Register Statistics
+ 18. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 19. Parameter Settings for User Entity Instance: to_matrix:matrix_led|univ_bin_counter:counter_1
+ 20. Parameter Settings for User Entity Instance: racket_mov:mov_left|univ_bin_counter:counter_1
+ 21. Parameter Settings for User Entity Instance: racket_mov:mov_right|univ_bin_counter:counter_1
+ 22. Parameter Settings for User Entity Instance: gameStates:game|univ_bin_counter:counter1
+ 23. Parameter Settings for User Entity Instance: ball_move:ball|univ_bin_counter:counter1
+ 24. Parameter Settings for User Entity Instance: ball_move:ball|univ_bin_counter:counter2
+ 25. Port Connectivity Checks: "ball_move:ball|univ_bin_counter:counter2"
+ 26. Port Connectivity Checks: "ball_move:ball|univ_bin_counter:counter1"
+ 27. Port Connectivity Checks: "gameStates:game|univ_bin_counter:counter1"
+ 28. Port Connectivity Checks: "racket_mov:mov_left|univ_bin_counter:counter_1"
+ 29. Port Connectivity Checks: "to_matrix:matrix_led|univ_bin_counter:counter_1"
+ 30. Elapsed Time Per Partition
+ 31. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Nov 19 01:59:03 2021      ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name                      ; pump                                       ;
+; Top-level Entity Name              ; pong                                       ;
+; Family                             ; Cyclone III                                ;
+; Total logic elements               ; 289                                        ;
+;     Total combinational functions  ; 281                                        ;
+;     Dedicated logic registers      ; 190                                        ;
+; Total registers                    ; 190                                        ;
+; Total pins                         ; 53                                         ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 0                                          ;
+; Embedded Multiplier 9-bit elements ; 0                                          ;
+; Total PLLs                         ; 0                                          ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP3C16F484C6       ;                    ;
+; Top-level entity name                                                      ; pong               ; pump               ;
+; Family name                                                                ; Cyclone III        ; Cyclone V          ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-8         ;   0.0%      ;
++----------------------------+-------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                   ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                            ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------+---------+
+; ball_move.vhd                    ; yes             ; User VHDL File  ; D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/ball_move.vhd        ;         ;
+; to_matrix.vhd                    ; yes             ; User VHDL File  ; D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/to_matrix.vhd        ;         ;
+; univ_bin_counter.vhd             ; yes             ; User VHDL File  ; D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/univ_bin_counter.vhd ;         ;
+; bin_to_sseg.vhd                  ; yes             ; User VHDL File  ; D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/bin_to_sseg.vhd      ;         ;
+; racket_mov.vhd                   ; yes             ; User VHDL File  ; D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/racket_mov.vhd       ;         ;
+; pong.vhd                         ; yes             ; User VHDL File  ; D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/pong.vhd             ;         ;
+; gameStates.vhd                   ; yes             ; User VHDL File  ; D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/gameStates.vhd       ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 289       ;
+;                                             ;           ;
+; Total combinational functions               ; 281       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 116       ;
+;     -- 3 input functions                    ; 76        ;
+;     -- <=2 input functions                  ; 89        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 212       ;
+;     -- arithmetic mode                      ; 69        ;
+;                                             ;           ;
+; Total registers                             ; 190       ;
+;     -- Dedicated logic registers            ; 190       ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 53        ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 190       ;
+; Total fan-out                               ; 1715      ;
+; Average fan-out                             ; 2.97      ;
++---------------------------------------------+-----------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                     ;
++--------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------+--------------+
+; Compilation Hierarchy Node           ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                   ; Library Name ;
++--------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------+--------------+
+; |pong                                ; 281 (2)           ; 190 (0)      ; 0           ; 0            ; 0       ; 0         ; 53   ; 0            ; |pong                                                 ; work         ;
+;    |ball_move:ball|                  ; 69 (32)           ; 52 (28)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pong|ball_move:ball                                  ; work         ;
+;       |univ_bin_counter:counter1|    ; 37 (37)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pong|ball_move:ball|univ_bin_counter:counter1        ; work         ;
+;    |bin_to_sseg:bin_to_sseg_pyleft|  ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pong|bin_to_sseg:bin_to_sseg_pyleft                  ; work         ;
+;    |bin_to_sseg:bin_to_sseg_pyright| ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pong|bin_to_sseg:bin_to_sseg_pyright                 ; work         ;
+;    |gameStates:game|                 ; 81 (43)           ; 50 (26)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pong|gameStates:game                                 ; work         ;
+;       |univ_bin_counter:counter1|    ; 38 (38)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pong|gameStates:game|univ_bin_counter:counter1       ; work         ;
+;    |racket_mov:mov_left|             ; 42 (18)           ; 36 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pong|racket_mov:mov_left                             ; work         ;
+;       |univ_bin_counter:counter_1|   ; 24 (24)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pong|racket_mov:mov_left|univ_bin_counter:counter_1  ; work         ;
+;    |racket_mov:mov_right|            ; 32 (18)           ; 12 (12)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pong|racket_mov:mov_right                            ; work         ;
+;       |univ_bin_counter:counter_1|   ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pong|racket_mov:mov_right|univ_bin_counter:counter_1 ; work         ;
+;    |to_matrix:matrix_led|            ; 41 (36)           ; 40 (36)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pong|to_matrix:matrix_led                            ; work         ;
+;       |univ_bin_counter:counter_1|   ; 5 (5)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |pong|to_matrix:matrix_led|univ_bin_counter:counter_1 ; work         ;
++--------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------+
+; State Machine - |pong|ball_move:ball|pr_state                                                            ;
++-----------------------+--------------------+---------------------+-----------------------+---------------+
+; Name                  ; pr_state.move_left ; pr_state.move_right ; pr_state.wait_seconds ; pr_state.move ;
++-----------------------+--------------------+---------------------+-----------------------+---------------+
+; pr_state.move         ; 0                  ; 0                   ; 0                     ; 0             ;
+; pr_state.wait_seconds ; 0                  ; 0                   ; 1                     ; 1             ;
+; pr_state.move_right   ; 0                  ; 1                   ; 0                     ; 1             ;
+; pr_state.move_left    ; 1                  ; 0                   ; 0                     ; 1             ;
++-----------------------+--------------------+---------------------+-----------------------+---------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------+
+; State Machine - |pong|gameStates:game|pr_state2                                                       ;
++---------------------+---------------------+--------------------+---------------------+----------------+
+; Name                ; pr_state2.add_right ; pr_state2.add_left ; pr_state2.wait_time ; pr_state2.init ;
++---------------------+---------------------+--------------------+---------------------+----------------+
+; pr_state2.init      ; 0                   ; 0                  ; 0                   ; 0              ;
+; pr_state2.wait_time ; 0                   ; 0                  ; 1                   ; 1              ;
+; pr_state2.add_left  ; 0                   ; 1                  ; 0                   ; 1              ;
+; pr_state2.add_right ; 1                   ; 0                  ; 0                   ; 1              ;
++---------------------+---------------------+--------------------+---------------------+----------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------+
+; State Machine - |pong|gameStates:game|pr_state                                      ;
++-----------------------+-----------------------+---------------------+---------------+
+; Name                  ; pr_state.down_rebound ; pr_state.up_rebound ; pr_state.play ;
++-----------------------+-----------------------+---------------------+---------------+
+; pr_state.play         ; 0                     ; 0                   ; 0             ;
+; pr_state.up_rebound   ; 0                     ; 1                   ; 1             ;
+; pr_state.down_rebound ; 1                     ; 0                   ; 1             ;
++-----------------------+-----------------------+---------------------+---------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------+
+; State Machine - |pong|racket_mov:mov_right|pr_state                                                    ;
++----------------------+------------------+------------------+----------------------+--------------------+
+; Name                 ; pr_state.clcik_l ; pr_state.click_r ; pr_state.wait_second ; pr_state.unclicked ;
++----------------------+------------------+------------------+----------------------+--------------------+
+; pr_state.unclicked   ; 0                ; 0                ; 0                    ; 0                  ;
+; pr_state.wait_second ; 0                ; 0                ; 1                    ; 1                  ;
+; pr_state.click_r     ; 0                ; 1                ; 0                    ; 1                  ;
+; pr_state.clcik_l     ; 1                ; 0                ; 0                    ; 1                  ;
++----------------------+------------------+------------------+----------------------+--------------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------+
+; State Machine - |pong|racket_mov:mov_left|pr_state                                                     ;
++----------------------+------------------+------------------+----------------------+--------------------+
+; Name                 ; pr_state.clcik_l ; pr_state.click_r ; pr_state.wait_second ; pr_state.unclicked ;
++----------------------+------------------+------------------+----------------------+--------------------+
+; pr_state.unclicked   ; 0                ; 0                ; 0                    ; 0                  ;
+; pr_state.wait_second ; 0                ; 0                ; 1                    ; 1                  ;
+; pr_state.click_r     ; 0                ; 1                ; 0                    ; 1                  ;
+; pr_state.clcik_l     ; 1                ; 0                ; 0                    ; 1                  ;
++----------------------+------------------+------------------+----------------------+--------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------+
+; State Machine - |pong|to_matrix:matrix_led|pr_state                                                     ;
++-----------------------+----------------+-----------------------+-----------------------+----------------+
+; Name                  ; pr_state.draw2 ; pr_state.wait_second2 ; pr_state.wait_second1 ; pr_state.draw1 ;
++-----------------------+----------------+-----------------------+-----------------------+----------------+
+; pr_state.draw1        ; 0              ; 0                     ; 0                     ; 0              ;
+; pr_state.wait_second1 ; 0              ; 0                     ; 1                     ; 1              ;
+; pr_state.wait_second2 ; 0              ; 1                     ; 0                     ; 1              ;
+; pr_state.draw2        ; 1              ; 0                     ; 0                     ; 1              ;
++-----------------------+----------------+-----------------------+-----------------------+----------------+
+
+
++-------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                         ;
++----------------------------------------------------+-------------------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal           ; Free of Timing Hazards ;
++----------------------------------------------------+-------------------------------+------------------------+
+; gameStates:game|temp_direction[0]                  ; gameStates:game|pr_state.play ; yes                    ;
+; gameStates:game|temp_left_righ                     ; GND                           ; yes                    ;
+; Number of user-specified and inferred latches = 2  ;                               ;                        ;
++----------------------------------------------------+-------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++--------------------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                             ;
++----------------------------------------------------------+---------------------------------------------------------------------+
+; Register name                                            ; Reason for Removal                                                  ;
++----------------------------------------------------------+---------------------------------------------------------------------+
+; gameStates:game|direction[1]                             ; Stuck at GND due to stuck port data_in                              ;
+; ball_move:ball|next_ball_m1_x[7]                         ; Merged with ball_move:ball|ball_x[8]                                ;
+; ball_move:ball|next_ball_m1_x[6]                         ; Merged with ball_move:ball|ball_x[9]                                ;
+; ball_move:ball|next_ball_m1_x[5]                         ; Merged with ball_move:ball|ball_x[10]                               ;
+; ball_move:ball|next_ball_m1_x[4]                         ; Merged with ball_move:ball|ball_x[11]                               ;
+; ball_move:ball|next_ball_m1_x[3]                         ; Merged with ball_move:ball|ball_x[12]                               ;
+; ball_move:ball|next_ball_m1_x[2]                         ; Merged with ball_move:ball|ball_x[13]                               ;
+; ball_move:ball|next_ball_m1_x[1]                         ; Merged with ball_move:ball|ball_x[14]                               ;
+; ball_move:ball|next_ball_m1_x[0]                         ; Merged with ball_move:ball|ball_x[15]                               ;
+; ball_move:ball|next_ball_m2_x[6]                         ; Merged with ball_move:ball|ball_x[1]                                ;
+; ball_move:ball|next_ball_m2_x[5]                         ; Merged with ball_move:ball|ball_x[2]                                ;
+; ball_move:ball|next_ball_m2_x[4]                         ; Merged with ball_move:ball|ball_x[3]                                ;
+; ball_move:ball|next_ball_m2_x[3]                         ; Merged with ball_move:ball|ball_x[4]                                ;
+; ball_move:ball|next_ball_m2_x[2]                         ; Merged with ball_move:ball|ball_x[5]                                ;
+; ball_move:ball|next_ball_m2_x[1]                         ; Merged with ball_move:ball|ball_x[6]                                ;
+; ball_move:ball|next_ball_m2_x[0]                         ; Merged with ball_move:ball|ball_x[7]                                ;
+; ball_move:ball|next_ball_m2_x[7]                         ; Merged with ball_move:ball|ball_x[0]                                ;
+; ball_move:ball|next_ball_y[6]                            ; Merged with ball_move:ball|ball_y[6]                                ;
+; ball_move:ball|next_ball_y[5]                            ; Merged with ball_move:ball|ball_y[5]                                ;
+; ball_move:ball|next_ball_y[4]                            ; Merged with ball_move:ball|ball_y[4]                                ;
+; ball_move:ball|next_ball_y[3]                            ; Merged with ball_move:ball|ball_y[3]                                ;
+; ball_move:ball|next_ball_y[2]                            ; Merged with ball_move:ball|ball_y[2]                                ;
+; ball_move:ball|next_ball_y[1]                            ; Merged with ball_move:ball|ball_y[1]                                ;
+; ball_move:ball|next_ball_y[0]                            ; Merged with ball_move:ball|ball_y[0]                                ;
+; ball_move:ball|next_ball_y[7]                            ; Merged with ball_move:ball|ball_y[7]                                ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[23] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[23] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[22] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[22] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[21] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[21] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[20] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[20] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[19] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[19] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[18] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[18] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[17] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[17] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[16] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[16] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[15] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[15] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[14] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[14] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[13] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[13] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[12] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[12] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[11] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[11] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[10] ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[10] ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[9]  ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[9]  ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[8]  ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[8]  ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[7]  ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[7]  ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[6]  ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[6]  ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[5]  ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[5]  ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[4]  ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[4]  ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[3]  ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[3]  ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[2]  ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[2]  ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[1]  ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[1]  ;
+; racket_mov:mov_right|univ_bin_counter:counter_1|temp[0]  ; Merged with racket_mov:mov_left|univ_bin_counter:counter_1|temp[0]  ;
+; gameStates:game|pr_state.up_rebound                      ; Lost fanout                                                         ;
+; Total Number of Removed Registers = 50                   ;                                                                     ;
++----------------------------------------------------------+---------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 190   ;
+; Number of registers using Synchronous Clear  ; 72    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 145   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 154   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; ball_move:ball|ball_x[8]               ; 5       ;
+; racket_mov:mov_left|next_pos[3]        ; 5       ;
+; racket_mov:mov_left|next_pos[4]        ; 5       ;
+; ball_move:ball|ball_y[4]               ; 7       ;
+; racket_mov:mov_left|next_pos[5]        ; 5       ;
+; racket_mov:mov_right|next_pos[3]       ; 5       ;
+; racket_mov:mov_right|next_pos[4]       ; 5       ;
+; racket_mov:mov_right|next_pos[5]       ; 5       ;
+; gameStates:game|direction[0]           ; 8       ;
+; Total number of inverted registers = 9 ;         ;
++----------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |pong|ball_move:ball|univ_bin_counter:counter1|temp[16]       ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |pong|gameStates:game|univ_bin_counter:counter1|temp[21]      ;
+; 3:1                ; 24 bits   ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; Yes        ; |pong|racket_mov:mov_left|univ_bin_counter:counter_1|temp[11] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |pong|to_matrix:matrix_led|univ_bin_counter:counter_1|temp[3] ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |pong|ball_move:ball|ball_y[2]                                ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 13 LEs               ; 13 LEs                 ; Yes        ; |pong|ball_move:ball|ball_x[2]                                ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |pong|to_matrix:matrix_led|leds_y2[2]                         ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |pong|racket_mov:mov_left|next_pos[2]                         ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |pong|racket_mov:mov_right|next_pos[6]                        ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |pong|racket_mov:mov_left|next_pos[5]                         ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 3 LEs                ; 6 LEs                  ; Yes        ; |pong|racket_mov:mov_right|next_pos[5]                        ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |pong|gameStates:game|next_state.down_rebound                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: to_matrix:matrix_led|univ_bin_counter:counter_1 ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: racket_mov:mov_left|univ_bin_counter:counter_1 ;
++----------------+-------+--------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                               ;
++----------------+-------+--------------------------------------------------------------------+
+; n              ; 24    ; Signed Integer                                                     ;
++----------------+-------+--------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: racket_mov:mov_right|univ_bin_counter:counter_1 ;
++----------------+-------+---------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                ;
++----------------+-------+---------------------------------------------------------------------+
+; n              ; 24    ; Signed Integer                                                      ;
++----------------+-------+---------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: gameStates:game|univ_bin_counter:counter1 ;
++----------------+-------+---------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                          ;
++----------------+-------+---------------------------------------------------------------+
+; n              ; 24    ; Signed Integer                                                ;
++----------------+-------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ball_move:ball|univ_bin_counter:counter1 ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; n              ; 24    ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ball_move:ball|univ_bin_counter:counter2 ;
++----------------+-------+--------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                         ;
++----------------+-------+--------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                               ;
++----------------+-------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ball_move:ball|univ_bin_counter:counter2"                                               ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; syn_clr  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; load     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; limit    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; up       ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; d        ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[1..0]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[3]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[2]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; max_tick ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; min_tick ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; counter  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ball_move:ball|univ_bin_counter:counter1"                                                ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; syn_clr   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; load      ; Input  ; Info     ; Stuck at GND                                                                        ;
+; limit     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; up        ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; d         ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[19..18] ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[21..20] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[17..15] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[13..12] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[5..0]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[23]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[22]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[14]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[11]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[10]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[7]      ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[6]      ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; min_tick  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; counter   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "gameStates:game|univ_bin_counter:counter1"                                               ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; syn_clr   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; load      ; Input  ; Info     ; Stuck at GND                                                                        ;
+; limit     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; up        ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; d         ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[19..18] ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[21..20] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[17..15] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[13..12] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[5..0]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[23]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[22]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[14]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[11]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[10]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[7]      ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[6]      ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; min_tick  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; counter   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "racket_mov:mov_left|univ_bin_counter:counter_1"                                          ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; syn_clr   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; load      ; Input  ; Info     ; Stuck at GND                                                                        ;
+; limit     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; up        ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; d         ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[19..18] ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[9..8]   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[21..20] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[17..15] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[13..12] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[5..0]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[23]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[22]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[14]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[11]     ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; p[10]     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[7]      ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p[6]      ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; min_tick  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; counter   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "to_matrix:matrix_led|univ_bin_counter:counter_1"                                        ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                             ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+; syn_clr  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; load     ; Input  ; Info     ; Stuck at GND                                                                        ;
+; limit    ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; up       ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; d        ; Input  ; Info     ; Stuck at GND                                                                        ;
+; p        ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; min_tick ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; counter  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+    Info: Processing started: Fri Nov 19 01:58:56 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off pump -c pump
+Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
+Info (12021): Found 2 design units, including 1 entities, in source file ball_move.vhd
+    Info (12022): Found design unit 1: ball_move-logic
+    Info (12023): Found entity 1: ball_move
+Info (12021): Found 2 design units, including 1 entities, in source file to_matrix.vhd
+    Info (12022): Found design unit 1: to_matrix-logic
+    Info (12023): Found entity 1: to_matrix
+Info (12021): Found 2 design units, including 1 entities, in source file univ_bin_counter.vhd
+    Info (12022): Found design unit 1: univ_bin_counter-rtl
+    Info (12023): Found entity 1: univ_bin_counter
+Info (12021): Found 2 design units, including 1 entities, in source file counter.vhd
+    Info (12022): Found design unit 1: counter-behaviour
+    Info (12023): Found entity 1: counter
+Info (12021): Found 2 design units, including 1 entities, in source file bin_to_sseg.vhd
+    Info (12022): Found design unit 1: bin_to_sseg-behaviour
+    Info (12023): Found entity 1: bin_to_sseg
+Info (12021): Found 2 design units, including 1 entities, in source file racket_mov.vhd
+    Info (12022): Found design unit 1: racket_mov-movimiento
+    Info (12023): Found entity 1: racket_mov
+Info (12021): Found 2 design units, including 1 entities, in source file pong.vhd
+    Info (12022): Found design unit 1: pong-logic
+    Info (12023): Found entity 1: pong
+Info (12021): Found 2 design units, including 1 entities, in source file pong_tb.vhd
+    Info (12022): Found design unit 1: pong_tb-tb
+    Info (12023): Found entity 1: pong_tb
+Info (12021): Found 2 design units, including 1 entities, in source file gamestates.vhd
+    Info (12022): Found design unit 1: gameStates-logic
+    Info (12023): Found entity 1: gameStates
+Warning (12019): Can't analyze file -- file output_files/ball_move.vhd is missing
+Info (12127): Elaborating entity "pong" for the top level hierarchy
+Info (12128): Elaborating entity "to_matrix" for hierarchy "to_matrix:matrix_led"
+Warning (10036): Verilog HDL or VHDL warning at to_matrix.vhd(36): object "min0" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at to_matrix.vhd(41): object "n0" assigned a value but never read
+Warning (10492): VHDL Process Statement warning at to_matrix.vhd(80): signal "racket_left" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at to_matrix.vhd(81): signal "racket_right" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at to_matrix.vhd(86): signal "ball_m1_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at to_matrix.vhd(87): signal "ball_m1_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at to_matrix.vhd(88): signal "ball_m2_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at to_matrix.vhd(89): signal "ball_m2_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at to_matrix.vhd(93): signal "racket_left" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at to_matrix.vhd(94): signal "racket_right" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at to_matrix.vhd(102): signal "ball_m1_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at to_matrix.vhd(103): signal "ball_m1_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at to_matrix.vhd(104): signal "ball_m2_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at to_matrix.vhd(105): signal "ball_m2_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "univ_bin_counter" for hierarchy "to_matrix:matrix_led|univ_bin_counter:counter_1"
+Info (12128): Elaborating entity "bin_to_sseg" for hierarchy "bin_to_sseg:bin_to_sseg_pyleft"
+Info (12128): Elaborating entity "racket_mov" for hierarchy "racket_mov:mov_left"
+Warning (10036): Verilog HDL or VHDL warning at racket_mov.vhd(26): object "min0" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at racket_mov.vhd(28): object "load" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at racket_mov.vhd(29): object "limit" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at racket_mov.vhd(30): object "up" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at racket_mov.vhd(31): object "d" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at racket_mov.vhd(32): object "p" assigned a value but never read
+Info (12128): Elaborating entity "univ_bin_counter" for hierarchy "racket_mov:mov_left|univ_bin_counter:counter_1"
+Info (12128): Elaborating entity "gameStates" for hierarchy "gameStates:game"
+Warning (10492): VHDL Process Statement warning at gameStates.vhd(106): signal "temp_direction" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at gameStates.vhd(101): inferring latch(es) for signal or variable "temp_direction", which holds its previous value in one or more paths through the process
+Warning (10492): VHDL Process Statement warning at gameStates.vhd(130): signal "points_Left" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at gameStates.vhd(131): signal "points_Right" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at gameStates.vhd(140): signal "points_Left" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at gameStates.vhd(141): signal "points_Right" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at gameStates.vhd(145): signal "points_Left" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at gameStates.vhd(146): signal "points_Right" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at gameStates.vhd(149): signal "points_Left" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at gameStates.vhd(150): signal "points_Right" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (10041): Inferred latch for "temp_direction[0]" at gameStates.vhd(101)
+Info (10041): Inferred latch for "temp_direction[1]" at gameStates.vhd(101)
+Info (10041): Inferred latch for "temp_left_righ" at gameStates.vhd(66)
+Info (12128): Elaborating entity "ball_move" for hierarchy "ball_move:ball"
+Warning (10036): Verilog HDL or VHDL warning at ball_move.vhd(26): object "min_counter1" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ball_move.vhd(27): object "max_counter2" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at ball_move.vhd(28): object "min_counter2" assigned a value but never read
+Warning (10492): VHDL Process Statement warning at ball_move.vhd(106): signal "ball_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ball_move.vhd(107): signal "ball_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ball_move.vhd(117): signal "ball_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ball_move.vhd(119): signal "ball_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ball_move.vhd(121): signal "ball_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ball_move.vhd(123): signal "temporal_ball_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ball_move.vhd(129): signal "ball_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ball_move.vhd(131): signal "ball_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ball_move.vhd(133): signal "ball_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ball_move.vhd(135): signal "temporal_ball_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ball_move.vhd(138): signal "ball_x" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at ball_move.vhd(139): signal "ball_y" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at ball_move.vhd(102): inferring latch(es) for signal or variable "temporal_ball_y", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "temporal_ball_y[0]" at ball_move.vhd(102)
+Info (10041): Inferred latch for "temporal_ball_y[1]" at ball_move.vhd(102)
+Info (10041): Inferred latch for "temporal_ball_y[2]" at ball_move.vhd(102)
+Info (10041): Inferred latch for "temporal_ball_y[3]" at ball_move.vhd(102)
+Info (10041): Inferred latch for "temporal_ball_y[4]" at ball_move.vhd(102)
+Info (10041): Inferred latch for "temporal_ball_y[5]" at ball_move.vhd(102)
+Info (10041): Inferred latch for "temporal_ball_y[6]" at ball_move.vhd(102)
+Info (10041): Inferred latch for "temporal_ball_y[7]" at ball_move.vhd(102)
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[2]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[3]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[4]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[5]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[6]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[7]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[0]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[1]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[1]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[2]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[3]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[4]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[5]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[6]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[7]" is permanently enabled
+Warning (14026): LATCH primitive "ball_move:ball|temporal_ball_y[0]" is permanently enabled
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 352 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 7 input pins
+    Info (21059): Implemented 46 output pins
+    Info (21061): Implemented 299 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 63 warnings
+    Info: Peak virtual memory: 4683 megabytes
+    Info: Processing ended: Fri Nov 19 01:59:03 2021
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:03
+
+

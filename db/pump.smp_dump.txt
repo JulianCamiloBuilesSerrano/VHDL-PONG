@@ -1,0 +1,41 @@
+
+State Machine - |pong|ball_move:ball|pr_state
+Name pr_state.move_left pr_state.move_right pr_state.wait_seconds pr_state.move 
+pr_state.move 0 0 0 0 
+pr_state.wait_seconds 0 0 1 1 
+pr_state.move_right 0 1 0 1 
+pr_state.move_left 1 0 0 1 
+
+State Machine - |pong|gameStates:game|pr_state2
+Name pr_state2.add_right pr_state2.add_left pr_state2.wait_time pr_state2.init 
+pr_state2.init 0 0 0 0 
+pr_state2.wait_time 0 0 1 1 
+pr_state2.add_left 0 1 0 1 
+pr_state2.add_right 1 0 0 1 
+
+State Machine - |pong|gameStates:game|pr_state
+Name pr_state.down_rebound pr_state.up_rebound pr_state.play 
+pr_state.play 0 0 0 
+pr_state.up_rebound 0 1 1 
+pr_state.down_rebound 1 0 1 
+
+State Machine - |pong|racket_mov:mov_right|pr_state
+Name pr_state.clcik_l pr_state.click_r pr_state.wait_second pr_state.unclicked 
+pr_state.unclicked 0 0 0 0 
+pr_state.wait_second 0 0 1 1 
+pr_state.click_r 0 1 0 1 
+pr_state.clcik_l 1 0 0 1 
+
+State Machine - |pong|racket_mov:mov_left|pr_state
+Name pr_state.clcik_l pr_state.click_r pr_state.wait_second pr_state.unclicked 
+pr_state.unclicked 0 0 0 0 
+pr_state.wait_second 0 0 1 1 
+pr_state.click_r 0 1 0 1 
+pr_state.clcik_l 1 0 0 1 
+
+State Machine - |pong|to_matrix:matrix_led|pr_state
+Name pr_state.draw2 pr_state.wait_second2 pr_state.wait_second1 pr_state.draw1 
+pr_state.draw1 0 0 0 0 
+pr_state.wait_second1 0 0 1 1 
+pr_state.wait_second2 0 1 0 1 
+pr_state.draw2 1 0 0 1 

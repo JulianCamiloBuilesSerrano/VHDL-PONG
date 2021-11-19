@@ -1,0 +1,53 @@
+LIBRARY IEEE;
+use ieee.numeric_std.all;
+USE ieee.std_logic_1164.all;
+-------------------------------------------------------
+ENTITY pong IS
+
+	PORT(
+				clk						:	in		std_logic;
+				ena						:	in		std_logic;
+				rst						:	in		std_logic;
+				button_up				:	in		std_logic;
+				button_down				:	in		std_logic;
+
+				racket_left				:	out	std_logic_vector(7 downto 0);
+				racket_right			:	out	std_logic_vector(7 downto 0)
+			);
+
+END ENTITY pong;
+-------------------------------------------------------
+architecture logic of pong is
+signal		actual_pos_l					:			std_logic_vector(7 downto 0);
+signal		next_pos_l					:			std_logic_vector(7 downto 0);
+signal		actual_pos_r					:			std_logic_vector(7 downto 0);
+signal		next_pos_r					:			std_logic_vector(7 downto 0);
+
+begin
+
+	racket_left <= next_pos_l;
+	racket_right <= next_pos_r;
+
+	mov_left: entity work.racket_mov
+	port map(
+					clk => clk,
+					rst => rst,
+					ena => ena,
+					button_r => button_up,
+					button_l => button_down,
+					actual_pos => actual_pos_l,
+					next_pos => next_pos_l
+				);
+	actual_pos_l >= next_pos_l;
+	mov_right: entity work.racket_mov
+	port map(
+					clk => clk,
+					rst => rst,
+					ena => ena,
+					button_r => button_up,
+					button_l => button_down,
+					actual_pos => actual_pos_r,
+					next_pos => next_pos_r
+				);
+	actual_pos_r <=next_pos_r;
+end architecture;

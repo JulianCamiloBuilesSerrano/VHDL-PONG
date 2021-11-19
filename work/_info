@@ -1,0 +1,347 @@
+m255
+K3
+13
+cModel Technology
+dC:\Users\pc\OneDrive\Documentos\semestre 4\diseño de sistemas digitales\proyecto\proyecto 2 video juego
+Eball_move
+Z0 w1637264708
+Z1 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z3 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z4 dD:\Documentos\Digitales\Proyecto\proyecto 2\proyecto 2 video juego
+Z5 8D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/ball_move.vhd
+Z6 FD:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/ball_move.vhd
+l0
+L5
+VGP3mBg_[i0mMX96L47N5l3
+Z7 OV;C;10.1d;51
+32
+Z8 !s108 1637265655.257000
+Z9 !s90 -reportprogress|300|-work|work|D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/ball_move.vhd|
+Z10 !s107 D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/ball_move.vhd|
+Z11 o-work work -O0
+Z12 tExplicit 1
+!s100 fzHCfjYi=5ORDQkShEgJU1
+!i10b 1
+Alogic
+Z13 DEx4 work 16 univ_bin_counter 0 22 fFz@lYJUT748mR6onk>bi0
+R1
+R2
+R3
+Z14 DEx4 work 9 ball_move 0 22 GP3mBg_[i0mMX96L47N5l3
+l31
+L18
+VLPGEZGH09JI;^]W>:S`:E2
+R7
+32
+R8
+R9
+R10
+R11
+R12
+!s100 Z>>YVh[FafRhAaFe7X5Tn0
+!i10b 1
+Ebin_to_sseg
+Z15 w1635185258
+R1
+R2
+R3
+R4
+Z16 8D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/bin_to_sseg.vhd
+Z17 FD:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/bin_to_sseg.vhd
+l0
+L5
+VlUYBaU1GgYb8o;8FMFc171
+R7
+32
+Z18 !s108 1637265656.126000
+Z19 !s90 -reportprogress|300|-work|work|D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/bin_to_sseg.vhd|
+Z20 !s107 D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/bin_to_sseg.vhd|
+R11
+R12
+!s100 <AU0^^3zEz<m7HgZN?TEI3
+!i10b 1
+Abehaviour
+R1
+R2
+R3
+Z21 DEx4 work 11 bin_to_sseg 0 22 lUYBaU1GgYb8o;8FMFc171
+l12
+L11
+Vd4;31]l8G749j39f<N<=21
+R7
+32
+R18
+R19
+R20
+R11
+R12
+!s100 iFAo`mCZk3:589DAZm@PZ0
+!i10b 1
+Ecounter
+Z22 w1636390370
+R2
+R1
+R4
+Z23 8D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/counter.vhd
+Z24 FD:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/counter.vhd
+l0
+L4
+VS[QdRCE@N8jaE`iW[M2Qb1
+R7
+32
+Z25 !s108 1637265657.127000
+Z26 !s90 -reportprogress|300|-work|work|D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/counter.vhd|
+Z27 !s107 D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/counter.vhd|
+R11
+R12
+!s100 `UXHgoK`9`YWbVT5fkaed0
+!i10b 1
+Abehaviour
+R21
+R3
+R13
+R2
+R1
+DEx4 work 7 counter 0 22 S[QdRCE@N8jaE`iW[M2Qb1
+l29
+L15
+V>c<=3J^:6c>z<8k>on1E20
+R7
+32
+R25
+R26
+R27
+R11
+R12
+!s100 jD<1;LAADVh>@aVF@Q4>>1
+!i10b 1
+Egamestates
+Z28 w1636699596
+R1
+R2
+R3
+R4
+Z29 8D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/gameStates.vhd
+Z30 FD:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/gameStates.vhd
+l0
+L5
+V4Z5Am@[2bM4hg4fEZZkaY1
+R7
+32
+Z31 !s108 1637265657.925000
+Z32 !s90 -reportprogress|300|-work|work|D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/gameStates.vhd|
+Z33 !s107 D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/gameStates.vhd|
+R11
+R12
+!s100 ^KJU97LD>15]WXUjHGXTH0
+!i10b 1
+Alogic
+R13
+R1
+R2
+R3
+DEx4 work 10 gamestates 0 22 4Z5Am@[2bM4hg4fEZZkaY1
+l37
+L26
+V^^<^;g:mW>39Cj@g:FVM>2
+R7
+32
+R31
+R32
+R33
+R11
+R12
+!s100 6NTHR9=OX96FGLZA6R@XH0
+!i10b 1
+Epong
+Z34 w1637211780
+R1
+R2
+R3
+R4
+Z35 8D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/pong.vhd
+Z36 FD:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/pong.vhd
+l0
+L5
+VnXj`ijS?MVYcHaPAo4Q=c3
+R7
+32
+Z37 !s108 1637265658.723000
+Z38 !s90 -reportprogress|300|-work|work|D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/pong.vhd|
+Z39 !s107 D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/pong.vhd|
+R11
+R12
+!s100 1YCf>H=O^L7jS94?HTZI[1
+!i10b 1
+Alogic
+R14
+Z40 DEx4 work 10 racket_mov 0 22 _K3n=Fo^RMbe@O<9P7I5D2
+Z41 DEx4 work 9 to_matrix 0 22 _fn1mAN1NN_PVBHhbYnR?1
+R1
+R2
+R3
+Z42 DEx4 work 4 pong 0 22 nXj`ijS?MVYcHaPAo4Q=c3
+l41
+L27
+Vain^B6HUm5TkDg8FIP`Ca2
+R7
+32
+R37
+R38
+R39
+R11
+R12
+!s100 lYn=o2XzZLIJQ8dFXWA5D3
+!i10b 1
+Epong_tb
+Z43 w1637265621
+R1
+R2
+R3
+R4
+Z44 8D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/pong_tb.vhd
+Z45 FD:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/pong_tb.vhd
+l0
+L5
+VJISAeoTX0eU=;LNS9a@nc3
+R7
+32
+Z46 !s108 1637265659.489000
+Z47 !s90 -reportprogress|300|-work|work|D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/pong_tb.vhd|
+Z48 !s107 D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/pong_tb.vhd|
+R11
+R12
+!s100 FCWnnYgK^g^45l@g49@o02
+!i10b 1
+Atb
+R42
+R1
+R2
+R3
+DEx4 work 7 pong_tb 0 22 JISAeoTX0eU=;LNS9a@nc3
+l20
+L10
+V20;MO9mlIc7NB7=PNz[4]3
+R7
+32
+R46
+R47
+R48
+R11
+R12
+!s100 D[BLzA:]gV<J9?SSaec[m1
+!i10b 1
+Eracket_mov
+Z49 w1636560873
+R1
+R2
+R3
+R4
+Z50 8D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/racket_mov.vhd
+Z51 FD:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/racket_mov.vhd
+l0
+L5
+V_K3n=Fo^RMbe@O<9P7I5D2
+R7
+32
+Z52 !s108 1637265660.265000
+Z53 !s90 -reportprogress|300|-work|work|D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/racket_mov.vhd|
+Z54 !s107 D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/racket_mov.vhd|
+R11
+R12
+!s100 JAV`A@em2^[7B4`=KUlhD0
+!i10b 1
+Amovimiento
+R13
+R1
+R2
+R3
+R40
+l34
+L21
+V;S53O7;BQT[<Imo`TjZ8S0
+R7
+32
+R52
+R53
+R54
+R11
+R12
+!s100 L4LzcFnZTHh0IXSPk7LDN3
+!i10b 1
+Eto_matrix
+Z55 w1636696789
+R1
+R2
+R3
+R4
+Z56 8D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/to_matrix.vhd
+Z57 FD:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/to_matrix.vhd
+l0
+L5
+V_fn1mAN1NN_PVBHhbYnR?1
+R7
+32
+Z58 !s108 1637265661.077000
+Z59 !s90 -reportprogress|300|-work|work|D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/to_matrix.vhd|
+Z60 !s107 D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/to_matrix.vhd|
+R11
+R12
+!s100 N2AClM0cUFciUJYB`X2^_1
+!i10b 1
+Alogic
+R13
+R1
+R2
+R3
+R41
+l42
+L31
+VNiES[C0PT8620Taf]5:HJ2
+!s100 3[OToe=NI<X?fgQfHegT=3
+R7
+32
+R58
+R59
+R60
+R11
+R12
+!i10b 1
+Euniv_bin_counter
+Z61 w1636390168
+R3
+R2
+R1
+R4
+Z62 8D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/univ_bin_counter.vhd
+Z63 FD:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/univ_bin_counter.vhd
+l0
+L5
+VfFz@lYJUT748mR6onk>bi0
+!s100 GANIS3Bj9EUjkmYMi=oET0
+R7
+32
+!i10b 1
+Z64 !s108 1637265661.687000
+Z65 !s90 -reportprogress|300|-work|work|D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/univ_bin_counter.vhd|
+Z66 !s107 D:/Documentos/Digitales/Proyecto/proyecto 2/proyecto 2 video juego/univ_bin_counter.vhd|
+R11
+R12
+Artl
+R3
+R2
+R1
+R13
+l30
+L24
+Z67 VlUB77_SiK78cflTG?[^cX0
+Z68 !s100 7JYh<oOB6fSLJj;H0::QE2
+R7
+32
+!i10b 1
+R64
+R65
+R66
+R11
+R12
